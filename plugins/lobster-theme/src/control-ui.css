@@ -1,0 +1,184 @@
+/*
+ * Lobster theme polish. The portable definition in themes/lobster.json already
+ * paints the theme; this stylesheet adds the hand-tuned tokens (with their WCAG AA
+ * audit) and the pincer-tip composer; control-ui.ts links the fonts and injects
+ * the artwork. Keyed on the qualified theme id so it never leaks into other themes.
+ */
+
+
+:root[data-theme-id="lobster-theme/lobster"][data-theme-mode="dark"] {
+  /*
+   * Accent — ember shell orange and bioluminescent teal on deep-sea black.
+   *
+   * WCAG 2.1 AA audit (bg = #071214, relative luminance ≈ 0.0056):
+   *   --accent #f5764a  contrast ≈ 6.8:1 AA ✓
+   *   --primary-foreground #2b0d04 on #f5764a button: 6.1:1 ✓
+   *   --destructive-foreground #2a0409 on #e8566a button: 4.7:1 ✓
+   *   body text --text #dccfbf: 12.2:1 ✓
+   *   worst text pairing --muted on --bg-muted: 5.8:1 ✓
+   */
+  --ring: #f5764a;
+  --accent: #f5764a;
+  --accent-hover: #ff8f66;
+  --accent-muted: #f5764a;
+  --accent-subtle: rgba(245, 118, 74, 0.13);
+  --accent-glow: rgba(245, 118, 74, 0.24);
+  --primary: #f5764a;
+  --primary-hover: #ff8f66;
+  --primary-foreground: #2b0d04;
+
+  --destructive: #e8566a;
+  --destructive-hover: #d8425a;
+  --destructive-foreground: #2a0409;
+
+  --focus: rgba(245, 118, 74, 0.18);
+  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 3px color-mix(in srgb, var(--ring) 75%, transparent);
+  --focus-glow: 0 0 0 2px var(--bg), 0 0 0 3px var(--ring), 0 0 18px var(--accent-glow);
+
+  --bg: #071214;
+  --bg-accent: #0a171a;
+  --bg-elevated: #0e1d20;
+  --bg-hover: #142a2e;
+  --bg-muted: #102326;
+
+  --card: #0e1d20;
+  --card-foreground: #f3e9dc;
+  --card-highlight: rgba(243, 233, 220, 0.05);
+  --popover: #122428;
+  --popover-foreground: #f3e9dc;
+
+  --panel: #071214;
+  --panel-strong: #0e1d20;
+  --panel-hover: #142a2e;
+  --chrome: rgba(7, 18, 20, 0.96);
+  --chrome-strong: rgba(7, 18, 20, 0.98);
+
+  --text: #dccfbf;
+  --text-strong: #f3e9dc;
+  --chat-text: #e2d6c6;
+  --muted: #8aa19f;
+  --muted-strong: #a3b6b4;
+  --muted-foreground: #8aa19f;
+
+  --border: #173135;
+  --border-strong: #234a4f;
+  --border-hover: #2f636a;
+  --input: #173135;
+
+  --secondary: #0e1d20;
+  --secondary-foreground: #f3e9dc;
+  --accent-2: #3fd1c0;
+  --accent-2-muted: rgba(63, 209, 192, 0.7);
+  --accent-2-subtle: rgba(63, 209, 192, 0.12);
+
+  --shadow-sm: 0 1px 2px rgba(0, 8, 10, 0.5);
+  --shadow-md: 0 4px 18px rgba(0, 8, 10, 0.6);
+  --shadow-lg: 0 14px 36px rgba(0, 8, 10, 0.7);
+  --overlay-shadow: var(--shadow-md);
+
+  --grid-line: rgba(220, 207, 191, 0.04);
+
+  --font-body: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-body);
+  --font-chat: "Fraunces", Georgia, "Times New Roman", serif;
+
+  /* Pincer tips: the composer's top corners scoop inward, the bottom stays round. */
+  --chat-composer-corner-shape: scoop scoop round round;
+}
+
+:root[data-theme-id="lobster-theme/lobster"][data-theme-mode="light"] {
+  /*
+   * Accent — cooked-shell red and sea-glass teal on sun-bleached sand.
+   *
+   * WCAG 2.1 AA audit (bg = #f4efe6, relative luminance ≈ 0.86):
+   *   --accent #b83c16  contrast ≈ 5.1:1 AA ✓
+   *   --primary-foreground #fff6ee on #b83c16 button: 5.3:1 ✓
+   *   --destructive-foreground #ffffff on #b8283f button: 6.4:1 ✓
+   *   body text --text #2a3638: 10.4:1 ✓
+   *   worst text pairing --muted on --bg-muted: 5.6:1 ✓ (≥5.0:1 over the artwork)
+   */
+  --ring: #b83c16;
+  --accent: #b83c16;
+  --accent-hover: #a5340f;
+  --accent-muted: #b83c16;
+  --accent-subtle: rgba(184, 60, 22, 0.09);
+  --accent-glow: rgba(184, 60, 22, 0.16);
+  --primary: #b83c16;
+  --primary-hover: #a5340f;
+  --primary-foreground: #fff6ee;
+
+  --destructive: #b8283f;
+  --destructive-hover: #a2223a;
+  --destructive-foreground: #ffffff;
+
+  --focus: rgba(184, 60, 22, 0.14);
+  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 3px color-mix(in srgb, var(--ring) 70%, transparent);
+  --focus-glow: 0 0 0 2px var(--bg), 0 0 0 3px var(--ring), 0 0 16px var(--accent-glow);
+
+  --bg: #f4efe6;
+  --bg-accent: #ede6da;
+  --bg-elevated: #fbf8f2;
+  --bg-hover: #e3dccf;
+  --bg-muted: #e9e2d5;
+  --bg-content: #f1ebe1;
+
+  --card: #fbf8f2;
+  --card-foreground: #1d2a2c;
+  --card-highlight: rgba(40, 30, 20, 0.02);
+  --popover: #fbf8f2;
+  --popover-foreground: #1d2a2c;
+  --session-hovercard-surface: var(--card);
+  --session-hovercard-progress-surface: color-mix(
+    in srgb,
+    var(--card) 52%,
+    var(--panel-strong) 48%
+  );
+
+  --panel: #f4efe6;
+  --panel-strong: #fbf8f2;
+  --panel-hover: #e3dccf;
+  --chrome: rgba(244, 239, 230, 0.96);
+  --chrome-strong: rgba(244, 239, 230, 0.98);
+
+  --text: #2a3638;
+  --text-strong: #14211f;
+  --chat-text: #2a3638;
+  --muted: #475a5c;
+  --muted-strong: #3a4b4d;
+  --muted-foreground: #475a5c;
+
+  --border: #d8cfbf;
+  --border-strong: #bfb3a0;
+  --border-hover: #a89b86;
+  --input: #d8cfbf;
+
+  --secondary: #fbf8f2;
+  --secondary-foreground: #1d2a2c;
+  --accent-2: #0f8b83;
+  --accent-2-muted: rgba(15, 139, 131, 0.7);
+  --accent-2-subtle: rgba(15, 139, 131, 0.1);
+
+  --shadow-sm: 0 1px 2px rgba(40, 30, 20, 0.1);
+  --shadow-md: 0 4px 16px rgba(40, 30, 20, 0.14);
+  --shadow-lg: 0 12px 32px rgba(40, 30, 20, 0.18);
+  --overlay-shadow: var(--shadow-md);
+
+  --grid-line: rgba(42, 54, 56, 0.05);
+
+  --font-body: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-body);
+  --font-chat: "Fraunces", Georgia, "Times New Roman", serif;
+
+  /* Pincer tips: the composer's top corners scoop inward, the bottom stays round. */
+  --chat-composer-corner-shape: scoop scoop round round;
+}
+
+/*
+ * Pincer tips: the composer's top corners scoop inward, the bottom stays round.
+ * Newer Gateways expose --chat-composer-corner-shape for exactly this; the direct
+ * rule keeps the shape on Gateways that predate the token. Engines without
+ * corner-shape keep the circular radius.
+ */
+:root[data-theme-id="lobster-theme/lobster"] .agent-chat__input {
+  corner-shape: scoop scoop round round;
+}

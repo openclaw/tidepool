@@ -7,6 +7,7 @@ Experimental [OpenClaw](https://github.com/openclaw/openclaw) plugins that are t
 | Plugin | What it does |
 | --- | --- |
 | [`redhat-theme`](plugins/redhat-theme) | A professional Red Hat look: Red Hat Red on neutral grays, the Red Hat type family, no lobster, a penguin in a fedora on the ledge, and build-and-deploy status words. |
+| [`lobster-theme`](plugins/lobster-theme) | A calm deep-sea Lobster look: ember and teal on black-teal or sand, Space Grotesk and Fraunces, one big line-art lobster across the canvas, and a composer with pincer-tip corners. |
 
 ## Using a plugin
 
