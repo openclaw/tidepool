@@ -1,0 +1,36 @@
+{
+  "name": "@openclaw/tidepool-lobster-theme",
+  "version": "0.1.0",
+  "description": "Lobster theme for the OpenClaw Control UI: deep-sea dark, sun-bleached light, ember and teal, one big line-art lobster (experimental, from the tidepool).",
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "openclaw.plugin.json",
+    "themes",
+    "src",
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && openclaw plugins build",
+    "check": "openclaw plugins validate --json"
+  },
+  "peerDependencies": {
+    "openclaw": ">=2026.9.5"
+  },
+  "openclaw": {
+    "extensions": [
+      "./dist/index.js"
+    ],
+    "controlUi": "./src/control-ui.ts",
+    "compat": {
+      "pluginApi": ">=2026.9.5"
+    },
+    "build": {
+      "openclawVersion": "2026.9.5"
+    }
+  },
+  "dependencies": {
+    "typebox": "^1.3.17"
+  }
+}
