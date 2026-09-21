@@ -1,0 +1,16 @@
+{
+  "id": "redhat-theme",
+  "name": "Red Hat theme",
+  "description": "A professional Red Hat look for the OpenClaw Control UI: Red Hat Red on neutral grays, the Red Hat type family, no lobster, and build-and-deploy status words.",
+  "categories": ["other"],
+  "activation": { "onStartup": false },
+  "configSchema": { "type": "object", "additionalProperties": false, "properties": {} },
+  "themes": [
+    {
+      "id": "redhat",
+      "name": "Red Hat",
+      "description": "Red Hat Red on charcoal or white with Red Hat Text, Display, and Mono. Mascot-free: the lobster stays home, ledge visitors include a penguin in a red fedora, an agent avatar occasionally wears the hat, and the status words speak build-and-deploy.",
+      "source": "themes/redhat.json"
+    }
+  ]
+}

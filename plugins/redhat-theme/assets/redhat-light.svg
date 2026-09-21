@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" fill="none">
+  <defs>
+    <linearGradient id="ink" x1="0" y1="1000" x2="1600" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#707070"/>
+      <stop offset="0.7" stop-color="#ee0000"/>
+      <stop offset="1" stop-color="#707070"/>
+    </linearGradient>
+    <radialGradient id="quiet">
+      <stop offset="0.15" stop-color="white" stop-opacity="0"/>
+      <stop offset="0.8" stop-color="white" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="white"/>
+    </radialGradient>
+    <mask id="edges"><path fill="url(#quiet)" d="M0 0h1600v1000H0z"/></mask>
+  </defs>
+  <g stroke="url(#ink)" stroke-width="2" opacity="0.06" mask="url(#edges)">
+    <!-- top-right: parallel rules at 12° from vertical, stepped 28px apart -->
+    <g transform="rotate(12 1600 0)">
+      <path d="M1180-200V1200M1208-200V1200M1236-200V1200M1264-200V1200M1292-200V1200M1320-200V1200M1348-200V1200M1376-200V1200M1404-200V1200M1432-200V1200M1460-200V1200M1488-200V1200M1516-200V1200"/>
+    </g>
+    <!-- bottom-left: the same rules, mirrored, thinning toward the center -->
+    <g transform="rotate(12 0 1000)">
+      <path d="M80-200V1200M108-200V1200M136-200V1200M164-200V1200M192-200V1200M220-200V1200M248-200V1200M276-200V1200M304-200V1200M332-200V1200"/>
+    </g>
+    <!-- one horizontal accent rule, the "hat brim", low on the canvas -->
+    <path d="M-40 860H520M1080 140H1640" stroke-width="3"/>
+  </g>
+</svg>
