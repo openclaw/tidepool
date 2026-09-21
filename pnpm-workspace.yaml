@@ -1,2 +1,9 @@
 packages:
   - plugins/*
+allowBuilds:
+  "@google/genai": true
+  esbuild: true
+  koffi: true
+  openclaw: true
+  protobufjs: true
+  tree-sitter-bash: true

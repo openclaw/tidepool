@@ -4,16 +4,33 @@
   "description": "Red Hat theme for the OpenClaw Control UI (experimental, from the tidepool).",
   "type": "module",
   "license": "MIT",
-  "files": ["openclaw.plugin.json", "themes", "dist", "README.md"],
+  "files": [
+    "openclaw.plugin.json",
+    "themes",
+    "src",
+    "dist",
+    "README.md"
+  ],
   "scripts": {
-    "build": "openclaw plugins build",
-    "check": "openclaw plugins validate ."
+    "build": "tsc -p tsconfig.json && openclaw plugins build",
+    "check": "openclaw plugins validate --json"
   },
   "peerDependencies": {
     "openclaw": ">=2026.9.5"
   },
   "openclaw": {
+    "extensions": [
+      "./dist/index.js"
+    ],
     "controlUi": "./src/control-ui.ts",
-    "compat": { "pluginApi": ">=2026.9.5", "minGatewayVersion": "2026.9.5" }
+    "compat": {
+      "pluginApi": ">=2026.9.5"
+    },
+    "build": {
+      "openclawVersion": "2026.9.5"
+    }
+  },
+  "dependencies": {
+    "typebox": "^1.3.17"
   }
 }

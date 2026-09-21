@@ -1,10 +1,18 @@
 {
   "id": "redhat-theme",
   "name": "Red Hat theme",
-  "description": "A professional Red Hat look for the OpenClaw Control UI: Red Hat Red on neutral grays, the Red Hat type family, no lobster, and build-and-deploy status words.",
-  "categories": ["other"],
-  "activation": { "onStartup": false },
-  "configSchema": { "type": "object", "additionalProperties": false, "properties": {} },
+  "description": "Red Hat look for the OpenClaw Control UI.",
+  "categories": [
+    "other"
+  ],
+  "activation": {
+    "onStartup": true
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  },
   "themes": [
     {
       "id": "redhat",
@@ -12,5 +20,15 @@
       "description": "Red Hat Red on charcoal or white with Red Hat Text, Display, and Mono. Mascot-free: the lobster stays home, ledge visitors include a penguin in a red fedora, an agent avatar occasionally wears the hat, and the status words speak build-and-deploy.",
       "source": "themes/redhat.json"
     }
-  ]
+  ],
+  "version": "0.1.0",
+  "controlUi": {
+    "entry": "dist/control-ui/9969ccaa1e8b99cf5e8064c2c3bd3dae4d76f5b8dc4869b0bcbccc280be6c4f7/index.js",
+    "styles": [
+      "dist/control-ui/9969ccaa1e8b99cf5e8064c2c3bd3dae4d76f5b8dc4869b0bcbccc280be6c4f7/index.css"
+    ]
+  },
+  "contracts": {
+    "tools": []
+  }
 }

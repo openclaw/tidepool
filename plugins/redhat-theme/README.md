@@ -13,7 +13,7 @@ A professional Red Hat look for the OpenClaw Control UI, following Red Hat's pub
 - `critters: ["penguin", "fedora"]`: a penguin in a red fedora and the hat on its own join the composer ledge traffic next to the crab, snail, duck, and jellyfish. The **Lobster visits** toggle still governs all visitors.
 - `avatarHat: "fedora"`: about one page load in six, an agent avatar wears a red fedora.
 
-These fields are part of the portable theme definition, so the theme works without any native plugin UI. The optional `src/control-ui.css` polish (loaded only with **Settings → Labs → Custom plugin UI** enabled) adds the self-declared Red Hat faces from Google Fonts, the hand-tuned token set with its WCAG AA audit, and the 12° hairline background artwork.
+These fields are part of the portable theme definition, so the theme works without any native plugin UI. The optional native polish (loaded only with **Settings → Labs → Custom plugin UI** enabled) is a minimal feature plugin with no operations: `src/control-ui.css` carries the hand-tuned token set with its WCAG AA audit, and `src/control-ui.ts` links the Red Hat faces from Google Fonts (the Control UI CSP allows that origin; plugin bundles cannot carry font files) and injects the 12° hairline background artwork, which the bundler refuses as a CSS data URL but carries as a string.
 
 ## Requirements
 
@@ -25,5 +25,7 @@ The `mascot`, `workingPhrases`, `critters`, and `avatarHat` fields need an OpenC
 pnpm install && pnpm build
 openclaw plugins install ./plugins/redhat-theme
 ```
+
+The build writes `dist/` (gitignored) and stamps the built Control UI paths into `openclaw.plugin.json`, so run it before installing from a checkout.
 
 Select **Red Hat** under Settings → Appearance, or ask the agent: "switch to the Red Hat theme".
