@@ -1,6 +1,7 @@
 import { defineControlUiPlugin } from "openclaw/plugin-sdk/control-ui";
 import { ARTWORK_DARK, ARTWORK_LIGHT } from "./artwork.js";
 import { contract } from "./contract.js";
+import { bindOwnedThemeNodes, type ThemeNodeHost } from "./control-ui-nodes.js";
 // Hand-tuned tokens and the pincer-tip composer, keyed on the theme id so they never leak into other themes.
 import "./control-ui.css";
 
@@ -16,24 +17,36 @@ const THEME = ':root[data-theme-id="lobster-theme/lobster"]';
 export default defineControlUiPlugin({
   id: contract.pluginId,
   activate() {
-    if (!document.getElementById(FONTS_ID)) {
-      const link = document.createElement("link");
-      link.id = FONTS_ID;
-      link.rel = "stylesheet";
-      link.href = FONTS_HREF;
-      document.head.append(link);
-    }
-    if (!document.getElementById(ARTWORK_ID)) {
-      const style = document.createElement("style");
-      style.id = ARTWORK_ID;
-      style.textContent =
-        `${THEME}[data-theme-mode="dark"] { --app-background-image: url("${ARTWORK_DARK}"); }\n` +
-        `${THEME}[data-theme-mode="light"] { --app-background-image: url("${ARTWORK_LIGHT}"); }\n`;
-      document.head.append(style);
-    }
-    return () => {
-      document.getElementById(FONTS_ID)?.remove();
-      document.getElementById(ARTWORK_ID)?.remove();
-    };
+    const link = document.createElement("link");
+    link.id = FONTS_ID;
+    link.rel = "stylesheet";
+    link.href = FONTS_HREF;
+    const style = document.createElement("style");
+    style.id = ARTWORK_ID;
+    style.textContent =
+      `${THEME}[data-theme-mode="dark"] { --app-background-image: url("${ARTWORK_DARK}"); }\n` +
+      `${THEME}[data-theme-mode="light"] { --app-background-image: url("${ARTWORK_LIGHT}"); }\n`;
+    return bindOwnedThemeNodes(themeNodeHost(document), link, style);
   },
 });
+
+function themeNodeHost(doc: Document): ThemeNodeHost<HTMLElement> {
+  return {
+    getElementById(id) {
+      const existing = doc.getElementById(id);
+      if (!existing) {
+        return null;
+      }
+      return {
+        replaceWith(node) {
+          existing.replaceWith(node);
+        },
+      };
+    },
+    head: {
+      append(node) {
+        doc.head.append(node);
+      },
+    },
+  };
+}
