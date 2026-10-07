@@ -2,7 +2,7 @@
   "name": "tidepool",
   "private": true,
   "description": "Experimental OpenClaw plugins: themes, critters, toys, and other small creatures.",
-  "packageManager": "pnpm@12.4.0",
+  "packageManager": "pnpm@12.9.1",
   "scripts": {
     "build": "pnpm -r run build",
     "check": "pnpm -r run check",
@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "esbuild": "^0.28.2",
-    "openclaw": "^2026.9.5",
+    "openclaw": "^2026.9.8",
     "typescript": "^6.0.0"
   }
 }

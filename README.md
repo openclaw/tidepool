@@ -21,7 +21,7 @@ Then pick the theme in **Settings → Appearance**, or ask the agent to switch t
 
 ## Development
 
-Use Node.js 24 and pnpm 12.4.0. Run `pnpm install --frozen-lockfile`, `pnpm test`, and `pnpm build` before submitting changes. Tests cover plugin reload ownership; the build type-checks and bundles each plugin.
+Use Node.js 24.16.0 or newer in the 24.x line and pnpm 12.9.1. Run `pnpm install --frozen-lockfile`, `pnpm test`, `pnpm build`, and `pnpm check` before submitting changes. Tests cover plugin reload ownership; the build type-checks and bundles each plugin, and the final check validates both built plugin manifests.
 
 ## Adding a plugin
 
