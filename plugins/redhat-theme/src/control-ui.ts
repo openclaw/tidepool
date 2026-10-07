@@ -1,7 +1,7 @@
 import { defineControlUiPlugin } from "openclaw/plugin-sdk/control-ui";
 import { ARTWORK_DARK, ARTWORK_LIGHT } from "./artwork.js";
 import { contract } from "./contract.js";
-import { bindOwnedThemeNodes, type ThemeNodeHost } from "./control-ui-nodes.js";
+import { bindOwnedThemeNodes } from "./control-ui-nodes.js";
 // Hand-tuned tokens, keyed on the theme id so they never leak into other themes.
 import "./control-ui.css";
 
@@ -25,27 +25,7 @@ export default defineControlUiPlugin({
     style.textContent =
       `${THEME}[data-theme-mode="dark"] { --app-background-image: url("${ARTWORK_DARK}"); }\n` +
       `${THEME}[data-theme-mode="light"] { --app-background-image: url("${ARTWORK_LIGHT}"); }\n`;
-    return bindOwnedThemeNodes(themeNodeHost(document), link, style);
+    return bindOwnedThemeNodes<HTMLElement>(document, link, style);
   },
 });
 
-function themeNodeHost(doc: Document): ThemeNodeHost<HTMLElement> {
-  return {
-    getElementById(id) {
-      const existing = doc.getElementById(id);
-      if (!existing) {
-        return null;
-      }
-      return {
-        replaceWith(node) {
-          existing.replaceWith(node);
-        },
-      };
-    },
-    head: {
-      append(node) {
-        doc.head.append(node);
-      },
-    },
-  };
-}
