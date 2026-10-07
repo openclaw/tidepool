@@ -19,6 +19,10 @@ openclaw plugins install ./plugins/redhat-theme
 
 Then pick the theme in **Settings → Appearance**, or ask the agent to switch to it. Native polish (fonts, artwork, hand-tuned tokens) loads only when **Settings → Labs → Custom plugin UI** is enabled; the portable palette works without it.
 
+## Development
+
+Use Node.js 24 and pnpm 12.4.0. Run `pnpm install --frozen-lockfile`, `pnpm test`, and `pnpm build` before submitting changes. Tests cover plugin reload ownership; the build type-checks and bundles each plugin.
+
 ## Adding a plugin
 
 Create `plugins/<name>/` with `openclaw.plugin.json`, a `package.json` named `@openclaw/tidepool-<name>`, and a README with one screenshot. Keep it self-contained: no shared runtime between plugins, no changes to OpenClaw itself. If a plugin needs a new theme or UI surface in OpenClaw, land that surface in the monorepo first and reference it here.

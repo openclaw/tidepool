@@ -15,6 +15,8 @@ A professional Red Hat look for the OpenClaw Control UI, following Red Hat's pub
 
 These fields are part of the portable theme definition, so the theme works without any native plugin UI. The optional native polish (loaded only with **Settings → Labs → Custom plugin UI** enabled) is a minimal feature plugin with no operations: `src/control-ui.css` carries the hand-tuned token set with its WCAG AA audit, and `src/control-ui.ts` links the Red Hat faces from Google Fonts (the Control UI CSP allows that origin; plugin bundles cannot carry font files) and injects the 12° hairline background artwork, which the bundler refuses as a CSS data URL but carries as a string.
 
+Each activation owns its font link and artwork style, so reloading the plugin preserves the replacement styles when the previous activation is disposed.
+
 ## Requirements
 
 The `mascot`, `workingPhrases`, `critters`, and `avatarHat` fields need an OpenClaw Gateway that includes the portable theme extension (openclaw/openclaw, September 2026). Older gateways reject the definition with a plugin diagnostic and keep the rest of the plugin inert.
